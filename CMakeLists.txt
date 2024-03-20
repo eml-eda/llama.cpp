@@ -381,6 +381,9 @@ if (LLAMA_BLAS)
             add_compile_definitions(GGML_BLAS_USE_MKL)
         endif()
 
+        set(GGML_HEADERS_BLAS ggml-blas.h)
+        set(GGML_SOURCES_BLAS ggml-blas.c)
+
         set(LLAMA_EXTRA_LIBS     ${LLAMA_EXTRA_LIBS}     ${BLAS_LIBRARIES})
         set(LLAMA_EXTRA_INCLUDES ${LLAMA_EXTRA_INCLUDES} ${BLAS_INCLUDE_DIRS})
     else()
@@ -1268,6 +1271,7 @@ add_library(ggml OBJECT
             ${GGML_SOURCES_KOMPUTE}   ${GGML_HEADERS_KOMPUTE}
             ${GGML_SOURCES_VULKAN}    ${GGML_HEADERS_VULKAN}
             ${GGML_SOURCES_ROCM}      ${GGML_HEADERS_ROCM}
+            ${GGML_SOURCES_BLAS}      ${GGML_HEADERS_BLAS}
             ${GGML_SOURCES_LLAMAFILE} ${GGML_HEADERS_LLAMAFILE}
             )
 
